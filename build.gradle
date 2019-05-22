@@ -30,10 +30,16 @@ cuba {
     artifact {
         group = 'com.borets.bugreport'
         version = '0.1'
-        isSnapshot = true
+        isSnapshot=false
     }
     tomcat {
         dir = "$project.rootDir/deploy/tomcat"
+    }
+
+    uploadRepository {
+        url = uploadRepoUrl
+        user=uploadRepoUsername
+        password=uploadRepoPassword
     }
 }
 
