@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:gui="http://schemas.haulmont.com/cuba/spring/cuba-gui.xsd">
+
+    <!-- Annotation-based beans -->
+    <context:component-scan base-package="com.borets.bugreport"/>
+
+    <gui:screens base-packages="com.borets.bugreport.web"/>
+
+    <bean id="cuba_App"
+          class="com.borets.bugreport.web.AppExt"
+          scope="vaadin"/>
+    <bean class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="remoteServices">
+            <map>
+                <entry key="bugreport_EmailSenderService" value="com.borets.bugreport.service.EmailSenderService"/>
+            </map>
+        </property>
+    </bean>
+</beans>

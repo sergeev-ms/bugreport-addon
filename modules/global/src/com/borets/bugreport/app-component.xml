@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<app-component xmlns="http://schemas.haulmont.com/cuba/app-component.xsd"
+               dependsOn="com.haulmont.cuba">
+
+    <module name="global" blocks="*">
+        <artifact name="bug-global" appJar="true"/>
+
+        <property name="cuba.persistenceConfig" value="+com/borets/bugreport/persistence.xml"/>
+        <property name="cuba.metadataConfig" value="+com/borets/bugreport/metadata.xml"/>
+        <property name="cuba.viewsConfig" value="+com/borets/bugreport/views.xml"/>
+    </module>
+    <module name="core" dependsOn="global" blocks="core">
+        <artifact name="bug-core" appJar="true"/>
+        <artifact name="bug-core" classifier="db" ext="zip" configuration="dbscripts"/>
+
+        <property name="cuba.springContextConfig" value="+com/borets/bugreport/spring.xml"/>
+        <property name="cuba.mainMessagePack" value="+com.borets.bugreport.core"/>
+    </module>
+    <module name="web" dependsOn="global" blocks="web">
+        <artifact name="bug-web" appJar="true"/>
+        <artifact name="bug-web" classifier="web" ext="zip" configuration="webcontent"/>
+
+        <property name="cuba.springContextConfig" value="+com/borets/bugreport/web-spring.xml"/>
+        <property name="cuba.dispatcherSpringContextConfig" value="+com/borets/bugreport/web-dispatcher-spring.xml"/>
+        <property name="cuba.windowConfig" value="+com/borets/bugreport/web-screens.xml"/>
+        <property name="cuba.menuConfig" value="+com/borets/bugreport/web-menu.xml"/>
+        <property name="cuba.permissionConfig" value="+com/borets/bugreport/web-permissions.xml"/>
+        <property name="cuba.mainMessagePack" value="+com.borets.bugreport.web"/>
+    </module>
+</app-component>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caption"
+        messagesPack="com.borets.bugreport.web.bugreportdialog">
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="stackTraceField"
+            spacing="true">
+        <label value="msg://bugReportDialog.title"/>
+        <textArea id="messageField"
+                  width="100%"
+                  height="AUTO"
+                  required="true"/>
+        <textArea id="stackTraceField"
+                  maxLength="6000"
+                  width="100%"
+                  enable="false"/>
+        <hbox align="MIDDLE_LEFT"
+              margin="true,false,false,false"
+              spacing="true"
+              stylename="c-edit-window-actions">
+            <button id="okBtn"
+                    caption="mainMsg://actions.Ok"
+                    icon="EDITOR_OK"
+                    stylename="primary"/>
+            <button id="cancelBtn"
+                    caption="mainMsg://actions.Cancel"
+                    icon="EDITOR_CANCEL"/>
+        </hbox>
+    </layout>
+</window>

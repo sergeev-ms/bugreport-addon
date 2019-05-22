@@ -1,0 +1,23 @@
+package com.borets.bugreport.configuration;
+
+import com.haulmont.cuba.core.config.Config;
+import com.haulmont.cuba.core.config.Property;
+import com.haulmont.cuba.core.config.Source;
+import com.haulmont.cuba.core.config.SourceType;
+import com.haulmont.cuba.core.config.defaults.Default;
+
+@Source(type = SourceType.DATABASE)
+public interface BugReportConfig extends Config {
+
+    @Default("wedb@borets.com")
+    @Property("bugreport.email.addressTo")
+    String getEmailAddressTo();
+
+    @Default("WEDB Bug Report")
+    @Property("bugreport.email.subject")
+    String getEmailSubject();
+
+    @Default("wedb@borets.com")
+    @Property("bugreport.email.addressFrom")
+    String getEmailAddressFrom();
+}
