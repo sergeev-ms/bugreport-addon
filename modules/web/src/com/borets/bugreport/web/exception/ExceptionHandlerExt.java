@@ -10,14 +10,13 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 public class ExceptionHandlerExt extends DefaultExceptionHandler {
 
     @Override
-    protected void showDialog(App app, Throwable exception) {
+    protected void showDialog(App app, AppUI ui, Throwable exception) {
         //very similar as parent method but with one difference what we invoke our custom exception dialog
         Throwable rootCause = ExceptionUtils.getRootCause(exception);
         if (rootCause == null) {
             rootCause = exception;
         }
         ExceptionDialog dialog = new ExceptionDialogExt(rootCause);
-        AppUI ui = AppUI.getCurrent();
         for (Window window : ui.getWindows()) {
             if (window.isModal()) {
                 dialog.setModal(true);

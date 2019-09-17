@@ -6,7 +6,7 @@ import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.icons.CubaIcon;
 import com.haulmont.cuba.gui.screen.OpenMode;
 import com.haulmont.cuba.gui.screen.Screen;
-import com.haulmont.cuba.web.App;
+import com.haulmont.cuba.web.AppUI;
 import com.haulmont.cuba.web.exception.ExceptionDialog;
 import com.haulmont.cuba.web.gui.icons.IconResolver;
 import com.haulmont.cuba.web.widgets.CubaButton;
@@ -46,7 +46,7 @@ public class ExceptionDialogExt extends ExceptionDialog {
 
     protected void createBugReport(String stackTrace) {
         final ScreenBuilders screenBuilders = AppBeans.get(ScreenBuilders.class);
-        final Screen frameOwner = App.getInstance().getTopLevelWindow().getFrameOwner();
+        final Screen frameOwner = AppUI.getCurrent().getTopLevelWindowNN().getFrameOwner();
 
         final BugReportDialog dialog = screenBuilders.screen(frameOwner)
                 .withScreenClass(BugReportDialog.class)
@@ -58,6 +58,5 @@ public class ExceptionDialogExt extends ExceptionDialog {
                 .build();
         dialog.setStackTrace(stackTrace);
         dialog.show();
-
     }
 }
