@@ -9,15 +9,13 @@ import com.haulmont.cuba.core.config.defaults.Default;
 @Source(type = SourceType.DATABASE)
 public interface BugReportConfig extends Config {
 
-    @Default("wedb@borets.com")
     @Property("bugreport.email.addressTo")
     String getEmailAddressTo();
 
-    @Default("WEDB Bug Report")
+    @Default("Bug Report")
     @Property("bugreport.email.subject")
     String getEmailSubject();
 
-    @Default("wedb@borets.com")
     @Property("bugreport.email.addressFrom")
     String getEmailAddressFrom();
 }
